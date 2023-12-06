@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Project Nhanh Như Chớp</string>
+    <string name="huongdanchoivong1">Trả lời đúng liên tiếp 10 câu trong vòng 120 giây bạn sẽ vượt qua vòng 1. Để xem bạn nhanh tay lẹ mắt và thông minh đến đâu. !!!</string>
+
+    <string name="huongdanchoivong2">Vòng 2 có 30 giây cho mỗi câu hỏi trả lời đúng bạn xẽ có 10 điểm . Chúc bạn chơi may mắn.!!!
+    Chúc bạn chơi vui vẻ.</string>
+    <string name="textStopHome">Bạn chưa đủ điểm để sử dụng quyền trợ giúp !!!</string>
 </resources>
