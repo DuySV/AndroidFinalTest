@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/anmation"
+    tools:context=".RoundOne">
+
+    <FrameLayout
+        android:layout_width="120dp"
+        android:layout_height="32dp"
+        android:id="@+id/Framediem"
+        android:layout_marginLeft="135dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/fom_start">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Điểm: "
+            android:id="@+id/tvdiem"
+            android:textColor="@color/colorWhite"
+            android:layout_marginLeft="10dp"
+            android:textSize="18sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100 "
+            android:id="@+id/tvdiemso"
+            android:textColor="@color/colorWhite"
+            android:layout_marginLeft="65dp"
+            android:textSize="18sp"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="107dp"
+        android:layout_height="32dp"
+        android:background="@drawable/fom_start"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="95dp"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:text="120 giây"
+            android:id="@+id/tvthoigian"
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="142dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="55dp">
+
+        <TextView
+            android:id="@+id/tvThem30s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trợ giúp(100đ)"
+            android:textColor="@color/colorButton"
+            android:textSize="18dp" />
+
+        <FrameLayout
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:id="@+id/btnAdd30s"
+            android:background="@drawable/buttom_small"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thêm 30s"
+                android:id="@+id/tvxem100"
+                android:gravity="center"
+                android:textColor="@color/colorWhite"
+                android:layout_marginLeft="10dp"
+                android:textSize="14sp"/>
+
+            <ImageView
+                android:layout_width="18sp"
+                android:layout_height="18sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="6dp"
+                android:src="@drawable/ic_action_play" />
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:id="@+id/btnDoiCauhoi"
+            android:background="@drawable/buttom_small"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đổi câu hỏi"
+                android:id="@+id/Xem50s"
+                android:gravity="center"
+                android:textColor="@color/colorWhite"
+                android:layout_marginLeft="5dp"
+                android:textSize="14sp"/>
+            <ImageView
+                android:layout_width="18sp"
+                android:layout_height="18sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="6dp"
+                android:src="@drawable/ic_action_play" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imgHome"
+                android:layout_width="26dp"
+                android:layout_gravity="center"
+                android:layout_height="26dp"
+                android:src="@drawable/ic_action_home" />
+            <CheckBox
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:id="@+id/imgVolume"
+                android:button="@drawable/nhacnen"
+                android:src="@drawable/ic_action_volume"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="135dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="95dp"
+        android:layout_marginBottom="180dp"
+        android:background="@drawable/fom_start">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvCauhoi"
+                android:layout_width="488dp"
+                android:layout_height="175dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:text="Bạn có 1000 cộng thêm 40. Bây giờ bạn cộng thêm 1000 khác. Và giờ thì cộng thêm 30...Cộng thêm 1000 nữa. Cộng thêm 20. Cộng thêm 1000 khác. Cộng thêm 10.Tổng là bao nhiêu vậy? "
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
+            z
+        </LinearLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/FrameLayout_DapAnA"
+            android:layout_width="177dp"
+            android:onClick="FrameLayout_DapAnA"
+            android:layout_height="40dp"
+            android:layout_marginLeft="135dp"
+            android:layout_marginBottom="118dp"
+            android:background="@drawable/fom_start">
+
+            <TextView
+                android:id="@+id/tvDapAn_A"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="A. 4100"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="177dp"
+            android:id="@+id/FrameLayout_DapAnB"
+            android:layout_height="40dp"
+            android:onClick="FrameLayout_DapAnB"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="95dp"
+            android:background="@drawable/fom_start">
+
+            <TextView
+                android:id="@+id/tvDapAn_B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="B. 2890"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
+        </FrameLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/FrameLayout_DapAnC"
+            android:layout_width="177dp"
+            android:layout_height="40dp"
+            android:onClick="FrameLayout_DapAnC"
+            android:layout_marginLeft="135dp"
+            android:layout_marginBottom="65dp"
+            android:background="@drawable/fom_start">
+
+            <TextView
+                android:id="@+id/tvDapAn_C"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="C. 3100"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="177dp"
+            android:onClick="FrameLayout_DapAnD"
+            android:id="@+id/FrameLayout_DapAnD"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="95dp"
+            android:background="@drawable/fom_start">
+
+            <TextView
+                android:id="@+id/tvDapAn_D"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="D. 5000 "
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
+        </FrameLayout>
+    </RelativeLayout>
+
+
+    <ImageView
+        android:layout_width="71dp"
+        android:layout_height="34dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="294dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:src="@drawable/icon" />
+    <FrameLayout
+        android:layout_width="116dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="30dp"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="13dp"
+            android:orientation="vertical">
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/score10"
+                    android:background="@drawable/upscore"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="10"
+                    android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="14sp"
+                    android:id="@+id/tvo10"
+                    android:textColor="@color/colorWhite"
+                    android:textAlignment="center"/>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <ImageView
+                    android:id="@+id/score9"
+                    android:background="@drawable/upscore"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="9"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/tvo9"
+                    android:textColor="@color/colorWhite"
+                    android:textAlignment="center"/>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/score8"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/upscore" />
+
+                <TextView
+                    android:id="@+id/tvo8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="8"
+                    android:layout_marginBottom="5dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="14sp" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <ImageView
+                    android:id="@+id/score7"
+                    android:background="@drawable/upscore"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="7"
+                    android:textSize="14sp"
+                    android:id="@+id/tvo7"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/colorWhite"
+                    android:textAlignment="center"/>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <ImageView
+                    android:id="@+id/score6"
+                    android:background="@drawable/upscore"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="6"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="14sp"
+                    android:id="@+id/tvo6"
+                    android:textColor="@color/colorWhite"
+                    android:textAlignment="center"/>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <ImageView
+                    android:id="@+id/score5"
+                    android:background="@drawable/upscore"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="5"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/tvo5"
+                    android:textColor="@color/colorWhite"
+                    android:textAlignment="center"/>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <ImageView
+                    android:id="@+id/score4"
+                    android:background="@drawable/upscore"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="4"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/tvo4"
+                    android:textColor="@color/colorWhite"
+                    android:textAlignment="center"/>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <ImageView
+                    android:id="@+id/score3"
+                    android:background="@drawable/upscore"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="3"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/tvo3"
+                    android:textColor="@color/colorWhite"
+                    android:textAlignment="center"/>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <ImageView
+                    android:id="@+id/score2"
+                    android:background="@drawable/upscore"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="2"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="14sp"
+                    android:id="@+id/tvo2"
+                    android:textColor="@color/colorWhite"
+                    android:textAlignment="center"/>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <ImageView
+                    android:id="@+id/score1"
+                    android:background="@drawable/upscore"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="1"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/tvo1"
+                    android:textColor="@color/colorWhite"
+                    android:textAlignment="center"/>
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:id="@+id/imganimation"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/tamgiac" />
+    </FrameLayout>
+
+</RelativeLayout>

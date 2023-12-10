@@ -8,4 +8,6 @@
     <color name="colorGreen">#0ED543</color>
     <color name="colorOranger">#ea6f1c</color>
     <color name="black_overlay">#66000000</color>
+    <color name="my_light_primary">#0ED543</color>
+
 </resources>

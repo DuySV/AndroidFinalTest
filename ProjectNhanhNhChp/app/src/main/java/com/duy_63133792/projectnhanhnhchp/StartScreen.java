@@ -36,7 +36,7 @@ public class StartScreen extends AppCompatActivity {
     private void Exitdialog(){
         final Dialog dialog = new Dialog(StartScreen.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialoghome);
+        dialog.setContentView(R.layout.dialog_home);
         dialog.show();
         TextView tvExit;
         Button btnContinue;

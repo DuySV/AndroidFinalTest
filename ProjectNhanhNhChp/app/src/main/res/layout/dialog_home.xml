@@ -27,7 +27,7 @@
             android:layout_marginRight="5dp"
             android:textColor="@color/colorWhite"
             android:layout_weight="1"
-            android:background="@drawable/boderbuttom"
+            android:background="@drawable/borderbuttom"
             android:text="Tiếp tục chơi"/>
         <Button
             android:layout_width="0dp"
@@ -38,7 +38,7 @@
             android:textSize="16sp"
             android:textAllCaps="false"
             android:layout_marginLeft="5dp"
-            android:background="@drawable/boderbuttom"
+            android:background="@drawable/borderbuttom"
             android:text="Menu"/>
 
     </LinearLayout>

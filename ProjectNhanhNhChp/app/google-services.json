@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "960328758693",
+    "project_id": "nhanhnhuchopproject",
+    "storage_bucket": "nhanhnhuchopproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:960328758693:android:359ef82380c74a82a6e44c",
+        "android_client_info": {
+          "package_name": "com.duy_63133792.projectnhanhnhchp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsOhekCQvM0ss5liiUVpxO2M1UkqaAlZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

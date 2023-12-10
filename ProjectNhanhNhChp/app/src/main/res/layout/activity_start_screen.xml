@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/backgroud"
+        android:src="@drawable/background"
         />
 
     <LinearLayout
@@ -21,31 +21,27 @@
         android:layout_marginEnd="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="70dp"
-
-
         >
 
         <Button
-            android:id="@+id/btnStart"
-            android:layout_width="140dp"
-            android:layout_height="44dp"
-            android:background="@drawable/boderbuttom"
+             android:id="@+id/btnStart"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:background="@drawable/borderbuttom"
             android:text="Bắt đầu"
             android:layout_marginLeft="35dp"
-            android:textAllCaps="false"
-            android:textColor="@color/colorWhite"
             android:textSize="20sp"
             />
 
+
         <Button
-            android:layout_width="140dp"
-            android:layout_height="44dp"
-            android:background="@drawable/boderbuttom"
-            android:text="Thoát"
             android:id="@+id/btnExit"
-            android:textAllCaps="false"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="20dp"
-            android:textColor="@color/colorWhite"
+
+            android:background="@drawable/borderbuttom"
+            android:text="Thoát"
             android:textSize="20sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
