@@ -13,25 +13,27 @@
         android:theme="@style/Theme.ProjectNhanhNhưChớp"
         tools:targetApi="31">
         <activity
-            android:name=".Animation_Blink"
-            android:exported="false" />
-        <activity
             android:name=".GuideOne"
             android:exported="false"
             android:label="@string/title_activity_guide_one"
-            android:theme="@style/Theme.ProjectNhanhNhưChớp" />
+            android:theme="@style/Theme.ProjectNhanhNhưChớp"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".RoundOne"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Loadgame"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".StartScreen"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

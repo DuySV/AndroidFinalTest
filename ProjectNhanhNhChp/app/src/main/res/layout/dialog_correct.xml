@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="500dp"
+    android:layout_gravity="center"
+    android:layout_height="300dp"
+    android:background="@drawable/anmation"
+    android:gravity="center">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+
+        <TextView
+            android:id="@+id/correctText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chính xác"
+            android:textColor="@color/colorGreen"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:textSize="30sp"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/dialogNext"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:background="@drawable/borderbuttom"
+        android:text="Câu tiếp theo"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp" />
+</LinearLayout>

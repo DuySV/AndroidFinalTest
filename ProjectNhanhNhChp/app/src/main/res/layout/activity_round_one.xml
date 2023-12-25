@@ -10,7 +10,6 @@
     <FrameLayout
         android:layout_width="120dp"
         android:layout_height="32dp"
-        android:id="@+id/Framediem"
         android:layout_marginLeft="135dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/fom_start">
@@ -18,7 +17,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Điểm: "
-            android:id="@+id/tvdiem"
             android:textColor="@color/colorWhite"
             android:layout_marginLeft="10dp"
             android:textSize="18sp"/>
@@ -26,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="100 "
-            android:id="@+id/tvdiemso"
+            android:id="@+id/tvScore"
             android:textColor="@color/colorWhite"
             android:layout_marginLeft="65dp"
             android:textSize="18sp"/>
@@ -47,7 +45,7 @@
             android:textColor="@color/colorWhite"
             android:textSize="18sp"
             android:text="120 giây"
-            android:id="@+id/tvthoigian"
+            android:id="@+id/tvTime"
             android:layout_gravity="center"/>
 
     </FrameLayout>
@@ -71,7 +69,7 @@
         <FrameLayout
             android:layout_width="80dp"
             android:layout_height="45dp"
-            android:id="@+id/btnAdd30s"
+            android:id="@+id/Frame_Add30s"
             android:background="@drawable/buttom_small"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="5dp">
@@ -79,7 +77,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Thêm 30s"
-                android:id="@+id/tvxem100"
                 android:gravity="center"
                 android:textColor="@color/colorWhite"
                 android:layout_marginLeft="10dp"
@@ -97,7 +94,7 @@
         <FrameLayout
             android:layout_width="80dp"
             android:layout_height="45dp"
-            android:id="@+id/btnDoiCauhoi"
+            android:id="@+id/Frame_DoiCauHoi"
             android:background="@drawable/buttom_small"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="5dp">
@@ -105,7 +102,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Đổi câu hỏi"
-                android:id="@+id/Xem50s"
                 android:gravity="center"
                 android:textColor="@color/colorWhite"
                 android:layout_marginLeft="5dp"
@@ -134,7 +130,7 @@
             <CheckBox
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:id="@+id/imgVolume"
+                android:id="@+id/CheckBox_Volume"
                 android:button="@drawable/nhacnen"
                 android:src="@drawable/ic_action_volume"/>
         </LinearLayout>
@@ -160,7 +156,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvCauhoi"
+                android:id="@+id/tvQuiz"
                 android:layout_width="488dp"
                 android:layout_height="175dp"
                 android:layout_gravity="center_horizontal"
@@ -168,7 +164,6 @@
                 android:text="Bạn có 1000 cộng thêm 40. Bây giờ bạn cộng thêm 1000 khác. Và giờ thì cộng thêm 30...Cộng thêm 1000 nữa. Cộng thêm 20. Cộng thêm 1000 khác. Cộng thêm 10.Tổng là bao nhiêu vậy? "
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp" />
-            z
         </LinearLayout>
 
     </ScrollView>
@@ -183,14 +178,14 @@
         <FrameLayout
             android:id="@+id/FrameLayout_DapAnA"
             android:layout_width="177dp"
-            android:onClick="FrameLayout_DapAnA"
+            android:onClick="Frame_A"
             android:layout_height="40dp"
             android:layout_marginLeft="135dp"
             android:layout_marginBottom="118dp"
             android:background="@drawable/fom_start">
 
             <TextView
-                android:id="@+id/tvDapAn_A"
+                android:id="@+id/tv_A"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -205,13 +200,13 @@
             android:layout_width="177dp"
             android:id="@+id/FrameLayout_DapAnB"
             android:layout_height="40dp"
-            android:onClick="FrameLayout_DapAnB"
+            android:onClick="Frame_B"
             android:layout_alignParentRight="true"
             android:layout_marginRight="95dp"
             android:background="@drawable/fom_start">
 
             <TextView
-                android:id="@+id/tvDapAn_B"
+                android:id="@+id/tv_B"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -232,13 +227,13 @@
             android:id="@+id/FrameLayout_DapAnC"
             android:layout_width="177dp"
             android:layout_height="40dp"
-            android:onClick="FrameLayout_DapAnC"
+            android:onClick="Frame_C"
             android:layout_marginLeft="135dp"
             android:layout_marginBottom="65dp"
             android:background="@drawable/fom_start">
 
             <TextView
-                android:id="@+id/tvDapAn_C"
+                android:id="@+id/tv_C"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -251,7 +246,7 @@
 
         <FrameLayout
             android:layout_width="177dp"
-            android:onClick="FrameLayout_DapAnD"
+            android:onClick="Frame_D"
             android:id="@+id/FrameLayout_DapAnD"
             android:layout_height="40dp"
             android:layout_alignParentTop="true"
@@ -260,7 +255,7 @@
             android:background="@drawable/fom_start">
 
             <TextView
-                android:id="@+id/tvDapAn_D"
+                android:id="@+id/tv_D"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -301,7 +296,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:id="@+id/score10"
+                    android:id="@+id/img_score10"
                     android:background="@drawable/upscore"
                     android:layout_width="30dp"
                     android:layout_height="20dp" />
@@ -313,7 +308,7 @@
                     android:gravity="center"
                     android:layout_marginBottom="5dp"
                     android:textSize="14sp"
-                    android:id="@+id/tvo10"
+                    android:id="@+id/tv10"
                     android:textColor="@color/colorWhite"
                     android:textAlignment="center"/>
             </FrameLayout>
@@ -322,7 +317,7 @@
                 android:layout_height="wrap_content"
                 >
                 <ImageView
-                    android:id="@+id/score9"
+                    android:id="@+id/img_score9"
                     android:background="@drawable/upscore"
                     android:layout_width="30dp"
                     android:layout_height="20dp" />
@@ -333,7 +328,7 @@
                     android:text="9"
                     android:textSize="15sp"
                     android:layout_marginBottom="5dp"
-                    android:id="@+id/tvo9"
+                    android:id="@+id/tv9"
                     android:textColor="@color/colorWhite"
                     android:textAlignment="center"/>
             </FrameLayout>
@@ -343,13 +338,13 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/score8"
+                    android:id="@+id/img_score8"
                     android:layout_width="30dp"
                     android:layout_height="20dp"
                     android:background="@drawable/upscore" />
 
                 <TextView
-                    android:id="@+id/tvo8"
+                    android:id="@+id/tv8"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -364,7 +359,7 @@
                 android:layout_height="wrap_content"
                 >
                 <ImageView
-                    android:id="@+id/score7"
+                    android:id="@+id/img_score7"
                     android:background="@drawable/upscore"
                     android:layout_width="30dp"
                     android:layout_height="20dp" />
@@ -374,7 +369,7 @@
                     android:layout_gravity="center"
                     android:text="7"
                     android:textSize="14sp"
-                    android:id="@+id/tvo7"
+                    android:id="@+id/tv7"
                     android:layout_marginBottom="5dp"
                     android:textColor="@color/colorWhite"
                     android:textAlignment="center"/>
@@ -384,7 +379,7 @@
                 android:layout_height="wrap_content"
                 >
                 <ImageView
-                    android:id="@+id/score6"
+                    android:id="@+id/img_score6"
                     android:background="@drawable/upscore"
                     android:layout_width="30dp"
                     android:layout_height="20dp" />
@@ -395,7 +390,7 @@
                     android:text="6"
                     android:layout_marginBottom="5dp"
                     android:textSize="14sp"
-                    android:id="@+id/tvo6"
+                    android:id="@+id/tv6"
                     android:textColor="@color/colorWhite"
                     android:textAlignment="center"/>
             </FrameLayout>
@@ -404,7 +399,7 @@
                 android:layout_height="wrap_content"
                 >
                 <ImageView
-                    android:id="@+id/score5"
+                    android:id="@+id/img_score5"
                     android:background="@drawable/upscore"
                     android:layout_width="30dp"
                     android:layout_height="20dp" />
@@ -415,7 +410,7 @@
                     android:text="5"
                     android:textSize="14sp"
                     android:layout_marginBottom="5dp"
-                    android:id="@+id/tvo5"
+                    android:id="@+id/tv5"
                     android:textColor="@color/colorWhite"
                     android:textAlignment="center"/>
             </FrameLayout>
@@ -424,7 +419,7 @@
                 android:layout_height="wrap_content"
                 >
                 <ImageView
-                    android:id="@+id/score4"
+                    android:id="@+id/img_score4"
                     android:background="@drawable/upscore"
                     android:layout_width="30dp"
                     android:layout_height="20dp" />
@@ -435,7 +430,7 @@
                     android:text="4"
                     android:textSize="14sp"
                     android:layout_marginBottom="5dp"
-                    android:id="@+id/tvo4"
+                    android:id="@+id/tv4"
                     android:textColor="@color/colorWhite"
                     android:textAlignment="center"/>
             </FrameLayout>
@@ -444,7 +439,7 @@
                 android:layout_height="wrap_content"
                 >
                 <ImageView
-                    android:id="@+id/score3"
+                    android:id="@+id/img_score3"
                     android:background="@drawable/upscore"
                     android:layout_width="30dp"
                     android:layout_height="20dp" />
@@ -455,7 +450,7 @@
                     android:text="3"
                     android:textSize="14sp"
                     android:layout_marginBottom="5dp"
-                    android:id="@+id/tvo3"
+                    android:id="@+id/tv3"
                     android:textColor="@color/colorWhite"
                     android:textAlignment="center"/>
             </FrameLayout>
@@ -464,7 +459,7 @@
                 android:layout_height="wrap_content"
                 >
                 <ImageView
-                    android:id="@+id/score2"
+                    android:id="@+id/img_score2"
                     android:background="@drawable/upscore"
                     android:layout_width="30dp"
                     android:layout_height="20dp" />
@@ -475,7 +470,7 @@
                     android:text="2"
                     android:layout_marginBottom="5dp"
                     android:textSize="14sp"
-                    android:id="@+id/tvo2"
+                    android:id="@+id/tv2"
                     android:textColor="@color/colorWhite"
                     android:textAlignment="center"/>
             </FrameLayout>
@@ -484,7 +479,7 @@
                 android:layout_height="wrap_content"
                 >
                 <ImageView
-                    android:id="@+id/score1"
+                    android:id="@+id/img_score1"
                     android:background="@drawable/upscore"
                     android:layout_width="30dp"
                     android:layout_height="20dp" />
@@ -496,7 +491,7 @@
                     android:gravity="center"
                     android:textSize="14sp"
                     android:layout_marginBottom="5dp"
-                    android:id="@+id/tvo1"
+                    android:id="@+id/tv1"
                     android:textColor="@color/colorWhite"
                     android:textAlignment="center"/>
             </FrameLayout>
@@ -506,7 +501,7 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="20dp"
-            android:id="@+id/imganimation"
+            android:id="@+id/imgAnimation"
             android:layout_marginLeft="30dp"
             android:src="@drawable/tamgiac" />
     </FrameLayout>

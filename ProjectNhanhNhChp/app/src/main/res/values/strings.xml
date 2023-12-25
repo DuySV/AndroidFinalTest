@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Project Nhanh Như Chớp</string>
-    <string name="huongdanchoivong1">Trả lời đúng liên tiếp 10 câu trong vòng 120 giây bạn sẽ vượt qua vòng 1. Để xem bạn nhanh tay lẹ mắt và thông minh đến đâu. !!!</string>
+    <string name="huongdanchoivong1">Trả lời đúng liên tiếp 10 câu trong vòng 120 giây bạn sẽ vượt qua vòng. Để xem bạn nhanh tay lẹ mắt và thông minh đến đâu. !!!</string>
     <string name="textStopHome">Bạn chưa đủ điểm để sử dụng quyền trợ giúp !!!</string>
+    <string name="textdungcuocchoihome">Bạn chưa đủ điểm để sử dụng quyền trợ giúp !!!</string>
     <string name="title_activity_guide_one">GuideOne</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
