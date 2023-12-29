@@ -21,6 +21,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -57,13 +58,10 @@ public class RoundOne extends AppCompatActivity {
     private FrameLayout Frame_B;
     private FrameLayout Frame_C;
     private FrameLayout Frame_D;
-    private FrameLayout frame100;
-    private FrameLayout frame50;
     private TextView tv_A;
     private TextView tv_B;
     private TextView tv_C;
     private TextView tv_D;
-    private int Victory=0;
     Question currentQuestion;
     QuestionHelper questionHelper;
     List<Question> list;
@@ -84,9 +82,13 @@ public class RoundOne extends AppCompatActivity {
         Doicauhoi();
 }
     private void khaibao() {
-
         Frame_Add30s=findViewById(R.id.Frame_Add30s);
         Frame_DoiCauHoi=findViewById(R.id.Frame_DoiCauHoi);
+
+        Frame_A = findViewById(R.id.FrameLayout_DapAnA);
+        Frame_B = findViewById(R.id.FrameLayout_DapAnB);
+        Frame_C = findViewById(R.id.FrameLayout_DapAnC);
+        Frame_D = findViewById(R.id.FrameLayout_DapAnD);
 
         CheckBox_Volume=findViewById(R.id.CheckBox_Volume);
 
@@ -103,6 +105,11 @@ public class RoundOne extends AppCompatActivity {
         tv8=findViewById(R.id.tv8);
         tv9=findViewById(R.id.tv9);
         tv10=findViewById(R.id.tv10);
+        tv_A=findViewById(R.id.tv_A);
+        tv_B=findViewById(R.id.tv_B);
+        tv_C=findViewById(R.id.tv_C);
+        tv_D=findViewById(R.id.tv_D);
+
         imgHome=findViewById(R.id.imgHome);
         img_score1=findViewById(R.id.img_score1);
         img_score2=findViewById(R.id.img_score2);
@@ -123,12 +130,13 @@ public class RoundOne extends AppCompatActivity {
         list = questionHelper.getAllofTheQuestion();
         Collections.shuffle(list);
         currentQuestion = list.get(qid);
+        timeValue = 120;
         countDownTimer = new CountDownTimer(120000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 tvTime.setText(String.valueOf(timeValue) + "\tgiây");
-                timeValue -= -1;
-                if (timeValue == -1) {
+                timeValue -= 1;
+                if (timeValue <= -1) {
                     tvTime.setText("Hết giờ");
                     disableButton();
                 }
@@ -167,15 +175,21 @@ public class RoundOne extends AppCompatActivity {
     }
     private void updateQO() {
         tvQuiz.setText(currentQuestion.getQuestion());
-        tv_A.setText(currentQuestion.getOpta());
-        tv_B.setText(currentQuestion.getOptb());
-        tv_C.setText(currentQuestion.getOptc());
-        tv_D.setText(currentQuestion.getOptd());
+
+        //xáo câu
+        List<String> options = new ArrayList<>(currentQuestion.getOptions());
+        Collections.shuffle(options);
+
+        tv_A.setText(options.get(0));
+        tv_B.setText(options.get(1));
+        tv_C.setText(options.get(2));
+        tv_D.setText(options.get(3));
+
         countDownTimer.cancel();
         countDownTimer.start();
-        tvScore.setText(String.valueOf(coinValue));
-        coinValue+=50;
 
+        tvScore.setText(String.valueOf(coinValue));
+        coinValue += 50;
     }
     private void timeUp() {
         Intent intent = new Intent(this, TimeUp.class);
@@ -248,91 +262,100 @@ public class RoundOne extends AppCompatActivity {
         Frame_C.setBackgroundResource(R.drawable.fom_start);
         Frame_D.setBackgroundResource(R.drawable.fom_start);
     }
-    private void processAnswerSelection(String selectedOption) {
+    private void processAnswerSelection(int selectedOptionIndex) {
         FrameLayout selectedFrameLayout = null;
-        String correctOption = currentQuestion.getAnswer();
-        if (selectedOption.equals(correctOption)) {
+        int correctOptionIndex = currentQuestion.getOptions().indexOf(currentQuestion.getAnswer());
+
+        if (selectedOptionIndex == correctOptionIndex) {
             disableButton();
             correctDialog();
-            if (currentQuestion.getOpta().equals(currentQuestion.getAnswer())) {
-                if (qid < list.size() - 1) {
-                    disableButton();
-                    correctDialog();
-                }
-            }   if (qid == 0) {
-                img_score1.setBackgroundResource(R.drawable.anim4);
-            }else if (qid == 1){
-                ObjectAnimator anim = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 585f);
-                anim.setDuration(10);
-                anim.start();
-                img_score2.setBackgroundResource(R.drawable.anim4);
-            }else if (qid == 2){
-                ObjectAnimator anim = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 510f);
-                anim.setDuration(10);
-                anim.start();
-                img_score3.setBackgroundResource(R.drawable.anim4);
-            }else if (qid == 3){
-                ObjectAnimator anim = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 435f);
-                anim.setDuration(10);
-                anim.start();
-                img_score4.setBackgroundResource(R.drawable.anim4);
-            }else if (qid == 4){
-                ObjectAnimator anim = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 360f);
-                anim.setDuration(10);
-                anim.start();
-                img_score5.setBackgroundResource(R.drawable.anim4);
-            }else if (qid == 5){
-                ObjectAnimator anim = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 285);
-                anim.setDuration(10);
-                anim.start();
-                img_score6.setBackgroundResource(R.drawable.anim4);
-            }else if (qid == 6) {
-                ObjectAnimator anim = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 210f);
-                anim.setDuration(10);
-                anim.start();
-                img_score7.setBackgroundResource(R.drawable.anim4);
-            }else if (qid == 7) {
-                ObjectAnimator anim = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 135f);
-                anim.setDuration(10);
-                anim.start();
-                img_score8.setBackgroundResource(R.drawable.anim4);
-            }else if (qid == 8) {
-                ObjectAnimator anim = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 60f);
-                anim.setDuration(10);
-                anim.start();
-                img_score9.setBackgroundResource(R.drawable.anim4);
-            }
-            else if (qid == 9){
-                ObjectAnimator anim = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 0f);
-                anim.setDuration(10);
-                anim.start();
-                img_score10.setBackgroundResource(R.drawable.anim4);
-                gameWon();
+
+            switch (qid) {
+                case 0:
+                    img_score1.setBackgroundResource(R.drawable.anim4);
+                    break;
+                case 1:
+                    ObjectAnimator anim = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 585f);
+                    anim.setDuration(10);
+                    anim.start();
+                    img_score2.setBackgroundResource(R.drawable.anim4);
+                    break;
+                case 2:
+                    ObjectAnimator anim2 = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 510f);
+                    anim2.setDuration(10);
+                    anim2.start();
+                    img_score3.setBackgroundResource(R.drawable.anim4);
+                    break;
+                case 3:
+                    ObjectAnimator anim3 = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 435f);
+                    anim3.setDuration(10);
+                    anim3.start();
+                    img_score3.setBackgroundResource(R.drawable.anim4);
+                    break;
+                case 4:
+                    ObjectAnimator anim4 = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 360f);
+                    anim4.setDuration(10);
+                    anim4.start();
+                    img_score3.setBackgroundResource(R.drawable.anim4);
+                    break;
+                case 5:
+                    ObjectAnimator anim5 = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 285f);
+                    anim5.setDuration(10);
+                    anim5.start();
+                    img_score3.setBackgroundResource(R.drawable.anim4);
+                    break;
+                case 6:
+                    ObjectAnimator anim6 = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 210f);
+                    anim6.setDuration(10);
+                    anim6.start();
+                    img_score3.setBackgroundResource(R.drawable.anim4);
+                    break;
+                case 7:
+                    ObjectAnimator anim7 = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 135f);
+                    anim7.setDuration(10);
+                    anim7.start();
+                    img_score3.setBackgroundResource(R.drawable.anim4);
+                    break;
+                case 8:
+                    ObjectAnimator anim8 = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 60f);
+                    anim8.setDuration(10);
+                    anim8.start();
+                    img_score3.setBackgroundResource(R.drawable.anim4);
+                    break;
+
+                case 9:
+                    ObjectAnimator anim9 = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 0f);
+                    anim9.setDuration(10);
+                    anim9.start();
+                    img_score10.setBackgroundResource(R.drawable.anim4);
+                    gameWon();
+                    break;
             }
         } else {
             gameLostPlayAgain();
         }
     }
-
-    public void Frame_B(View view) {
-        Frame_B.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorOranger));
-        processAnswerSelection(currentQuestion.getOpta());
-    }
-
     public void Frame_A(View view) {
         Frame_A.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorOranger));
-        processAnswerSelection(currentQuestion.getOptb());
+        processAnswerSelection(1);
     }
+    public void Frame_B(View view) {
+        Frame_B.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorOranger));
+        processAnswerSelection(0); // Assuming the options are shuffled, and the correct answer is at index 0
+    }
+
+
 
     public void Frame_C(View view) {
         Frame_C.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorOranger));
-        processAnswerSelection(currentQuestion.getOptc());
+        processAnswerSelection(2);
     }
 
     public void Frame_D(View view) {
         Frame_D.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorOranger));
-        processAnswerSelection(currentQuestion.getOptd());
+        processAnswerSelection(3);
     }
+
 
     public void gameLostPlayAgain() {
         Intent intent = new Intent(this, PlayAgain.class);
@@ -377,7 +400,7 @@ public class RoundOne extends AppCompatActivity {
         });
     }
     private void Them30s(){
-        frame100.setOnClickListener(new View.OnClickListener() {
+        Frame_Add30s.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (coinValue < 100){
@@ -392,7 +415,7 @@ public class RoundOne extends AppCompatActivity {
         });
     }
     private void Doicauhoi(){
-        frame50.setOnClickListener(new View.OnClickListener() {
+        Frame_DoiCauHoi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (coinValue < 100){

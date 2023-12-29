@@ -1,33 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/anmation"
+    android:gravity="center"
     android:orientation="vertical">
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Chúc mừng bạn đã vượt qua Game "
-    android:textColor="@color/colorWhite"
-    android:textSize="30sp"
-    android:id="@+id/tvchucmung"
-    android:layout_marginTop="30dp"
-    android:layout_gravity="center_horizontal"/>
 
+    <TextView
+        android:id="@+id/wrongAns"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="Sai rồi hãy bắt đầu lại !!!"
+        android:textColor="@color/colorButton"
+        android:textSize="30sp" />
     <ImageView
         android:layout_width="170dp"
         android:layout_height="170dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/quavong" />
+        android:src="@drawable/fact" />
 
     <Button
-        android:id="@+id/btntieptucchoiCm"
+        android:id="@+id/playAgainButton"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:text="Tiếp tục chơi"
         android:background="@drawable/borderbuttom"
-        android:text="Tiếp tục chơi nào"
+        android:textSize="20sp"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
-        android:textSize="20sp" />
+        android:layout_marginBottom="10dp"
+         />
 </LinearLayout>

@@ -1,30 +1,24 @@
 package com.duy_63133792.projectnhanhnhchp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Question {
     private int id;
     private String question;
-    private String opta;
-    private String optb;
-    private String optc;
-    private String optd;
+    private List<String> options;
     private String answer;
 
     public Question() {
         this.id = id;
         this.question = question;
-        this.opta = opta;
-        this.optb = optb;
-        this.optc = optc;
-        this.optd = optd;
+        this.options = (options != null) ? options : new ArrayList<>();
         this.answer = answer;
     }
-    public Question(String q, String oa, String ob, String oc, String od, String ans) {
+    public Question(String q, List<String> options, String ans) {
 
         question = q;
-        opta = oa;
-        optb = ob;
-        optc = oc;
-        optd = od;
+        this.options =options;
         answer = ans;
     }
 
@@ -44,36 +38,12 @@ public class Question {
         this.question = question;
     }
 
-    public String getOpta() {
-        return opta;
+    public List<String> getOptions() {
+        return options;
     }
 
-    public void setOpta(String opta) {
-        this.opta = opta;
-    }
-
-    public String getOptb() {
-        return optb;
-    }
-
-    public void setOptb(String optb) {
-        this.optb = optb;
-    }
-
-    public String getOptc() {
-        return optc;
-    }
-
-    public void setOptc(String optc) {
-        this.optc = optc;
-    }
-
-    public String getOptd() {
-        return optd;
-    }
-
-    public void setOptd(String optd) {
-        this.optd = optd;
+    public void setOptions(List<String> options) {
+        this.options = options;
     }
 
     public String getAnswer() {
