@@ -6,16 +6,16 @@ import java.util.List;
 public class Question {
     private int id;
     private String question;
-    private List<String> options;
+    private String[] options;
     private String answer;
 
     public Question() {
         this.id = id;
         this.question = question;
-        this.options = (options != null) ? options : new ArrayList<>();
+        this.options = (options != null) ? options : new ArrayList<>().toArray(new String[0]);
         this.answer = answer;
     }
-    public Question(String q, List<String> options, String ans) {
+    public Question(String q,  String[] options, String ans) {
 
         question = q;
         this.options =options;
@@ -38,11 +38,11 @@ public class Question {
         this.question = question;
     }
 
-    public List<String> getOptions() {
+    public String[] getOptions() {
         return options;
     }
 
-    public void setOptions(List<String> options) {
+    public void setOptions( String[] options) {
         this.options = options;
     }
 

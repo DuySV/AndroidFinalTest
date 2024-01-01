@@ -50,13 +50,12 @@ public class QuestionHelper extends SQLiteOpenHelper {
     public void allQuestion(){
         ArrayList<Question> questionArrayList = new ArrayList<>();
 
-        List<String> options1 = Arrays.asList(" H20", " Chất bột", " Chất xám", " Không có chất gì");
-        Question question1 = new Question("Chất gì trong con người nhiều hơn chất ?", options1, " Chất xám");
-
-        List<String> options2 = new ArrayList<>();
-        options2.addAll(Arrays.asList("Là chữ U", "Là thằng cu", "Là chữ ngu", "Không có đường gì cả"));
-        questionArrayList.add(new Question(
-                "Ở cuối con đường tình yêu là gì?", options2, "Đường chữ U"));
+        questionArrayList.add(new Question("We have lived in Hanoi............... 4 years.",
+                new String[]{"in", "since", "for", "at"},
+                "at"));
+        questionArrayList.add(new Question("2",
+                new String[]{"1", "2", "3", "4"},
+                "2"));
 
         this.addAllQuestion(questionArrayList);
     }
@@ -65,51 +64,58 @@ public class QuestionHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
         database.beginTransaction();
         try {
-            ContentValues values = new ContentValues();
-            for (Question question: questionArrayList){
+            ContentValues values;
+            for (Question question : questionArrayList) {
+                values = new ContentValues();
                 values.put(QUESTION, question.getQuestion());
-                List<String> options = question.getOptions();
-                if (options != null && options.size() >= 4) {
-                    values.put(OPTA, options.get(0));
-                    values.put(OPTB, options.get(1));
-                    values.put(OPTC, options.get(2));
-                    values.put(OPTD, options.get(3));
+                String[] options = question.getOptions();
+                if (options != null && options.length >= 4) {
+                    values.put(OPTA, options[0]); // Gán giá trị của OPTA từ mảng options
+                    values.put(OPTB, options[1]); // Gán giá trị của OPTB từ mảng options
+                    values.put(OPTC, options[2]); // Gán giá trị của OPTC từ mảng options
+                    values.put(OPTD, options[3]); // Gán giá trị của OPTD từ mảng options
+                    Log.d("add", question.getAnswer());
                 } else {
-                    Log.d("AllQ", "Option bị null!");
+                    Log.d("AllQ", "Option bị null hoặc không đủ phần tử!");
                 }
                 values.put(ANSWER, question.getAnswer());
                 database.insert(TABLE_NAME, null, values);
             }
             database.setTransactionSuccessful();
-
-        }finally {
+        } finally {
             database.endTransaction();
             database.close();
         }
     }
-    public List<Question> getAllofTheQuestion(){
+    public List<Question> getAllofTheQuestion() {
         List<Question> questionList = new ArrayList<>();
         SQLiteDatabase database = this.getWritableDatabase();
-        database.beginTransaction();
         String coloumn[] = {UID, QUESTION, OPTA, OPTB, OPTC, OPTD, ANSWER};
         Cursor cursor = database.query(TABLE_NAME, coloumn, null, null, null, null, null);
+
         if (cursor != null && cursor.getCount() > 0) {
-            while (cursor.moveToNext()){
+            while (cursor.moveToNext()) {
                 Question question = new Question();
                 question.setId(cursor.getInt(0));
                 question.setQuestion(cursor.getString(1));
-                List<String> options = new ArrayList<>();
-                options.add(cursor.getString(2));
-                options.add(cursor.getString(3));
-                options.add(cursor.getString(4));
-                options.add(cursor.getString(5));
+
+                String[] options = new String[4];
+
+                options[0] = cursor.getString(2);
+                options[1] = cursor.getString(3);
+                options[2] = cursor.getString(4);
+                options[3] = cursor.getString(5);
+
                 question.setOptions(options);
+                question.setAnswer(cursor.getString(6));
+
+                Log.d("get", question.getQuestion());
+                Log.d("get", Arrays.toString(question.getOptions()));
+
                 questionList.add(question);
-                Log.d("get", cursor.getString(1));            }
+            }
         }
 
-        database.setTransactionSuccessful();
-        database.endTransaction();
         cursor.close();
         database.close();
         return questionList;

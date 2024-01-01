@@ -13,6 +13,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -22,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -72,6 +74,8 @@ public class RoundOne extends AppCompatActivity {
     CountDownTimer countDownTimer;
     MediaPlayer bacgroudmuis = new MediaPlayer();
     private float imgAnimation;
+    private int correctOptionIndex;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +84,7 @@ public class RoundOne extends AppCompatActivity {
         khaibao();
         Them30s();
         Doicauhoi();
-}
+    }
     private void khaibao() {
         Frame_Add30s=findViewById(R.id.Frame_Add30s);
         Frame_DoiCauHoi=findViewById(R.id.Frame_DoiCauHoi);
@@ -121,7 +125,6 @@ public class RoundOne extends AppCompatActivity {
         img_score8=findViewById(R.id.img_score8);
         img_score9=findViewById(R.id.img_score9);
         img_score10=findViewById(R.id.img_score10);
-
         questionHelper = new QuestionHelper(this);
         questionHelper.getWritableDatabase();
         if (questionHelper.getAllofTheQuestion().size() == 0) {
@@ -129,6 +132,11 @@ public class RoundOne extends AppCompatActivity {
         }
         list = questionHelper.getAllofTheQuestion();
         Collections.shuffle(list);
+
+        for(Question q : list){
+            Log.d("List", q.getQuestion());
+        }
+
         currentQuestion = list.get(qid);
         timeValue = 120;
         countDownTimer = new CountDownTimer(120000, 1000) {
@@ -139,6 +147,7 @@ public class RoundOne extends AppCompatActivity {
                 if (timeValue <= -1) {
                     tvTime.setText("Hết giờ");
                     disableButton();
+                    timeUp();
                 }
             }
             @Override
@@ -176,14 +185,19 @@ public class RoundOne extends AppCompatActivity {
     private void updateQO() {
         tvQuiz.setText(currentQuestion.getQuestion());
 
-        //xáo câu
-        List<String> options = new ArrayList<>(currentQuestion.getOptions());
-        Collections.shuffle(options);
+        // Lấy mảng options từ currentQuestion và xáo trộn nó
+        String[] options = currentQuestion.getOptions().clone();
+        List<String> shuffledOptions = Arrays.asList(options);
+        Collections.shuffle(shuffledOptions);
 
-        tv_A.setText(options.get(0));
-        tv_B.setText(options.get(1));
-        tv_C.setText(options.get(2));
-        tv_D.setText(options.get(3));
+        // Cập nhật vị trí của đáp án đúng trong mảng đã xáo trộn
+        correctOptionIndex = Arrays.asList(options).indexOf(currentQuestion.getAnswer());
+
+        // Hiển thị các lựa chọn đã xáo trộn lên giao diện
+        tv_A.setText(shuffledOptions.get(0));
+        tv_B.setText(shuffledOptions.get(1));
+        tv_C.setText(shuffledOptions.get(2));
+        tv_D.setText(shuffledOptions.get(3));
 
         countDownTimer.cancel();
         countDownTimer.start();
@@ -263,13 +277,10 @@ public class RoundOne extends AppCompatActivity {
         Frame_D.setBackgroundResource(R.drawable.fom_start);
     }
     private void processAnswerSelection(int selectedOptionIndex) {
-        FrameLayout selectedFrameLayout = null;
-        int correctOptionIndex = currentQuestion.getOptions().indexOf(currentQuestion.getAnswer());
 
         if (selectedOptionIndex == correctOptionIndex) {
             disableButton();
             correctDialog();
-
             switch (qid) {
                 case 0:
                     img_score1.setBackgroundResource(R.drawable.anim4);
@@ -337,11 +348,11 @@ public class RoundOne extends AppCompatActivity {
     }
     public void Frame_A(View view) {
         Frame_A.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorOranger));
-        processAnswerSelection(1);
+        processAnswerSelection(0);
     }
     public void Frame_B(View view) {
         Frame_B.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorOranger));
-        processAnswerSelection(0); // Assuming the options are shuffled, and the correct answer is at index 0
+        processAnswerSelection(1); // Assuming the options are shuffled, and the correct answer is at index 0
     }
 
 
@@ -431,4 +442,4 @@ public class RoundOne extends AppCompatActivity {
             }
         });
     }
-    }
+}
