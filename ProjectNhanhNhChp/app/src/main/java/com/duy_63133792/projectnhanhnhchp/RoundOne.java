@@ -26,12 +26,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class RoundOne extends AppCompatActivity {
     private TextView tvScore;
     private TextView tvTime;
     private FrameLayout Frame_Add30s;
-    private FrameLayout  Frame_DoiCauHoi;
+    private FrameLayout Frame_DoiCauHoi;
     private ImageView imgHome;
     private CheckBox CheckBox_Volume;
     private TextView tvQuiz;
@@ -45,16 +47,16 @@ public class RoundOne extends AppCompatActivity {
     private TextView tv8;
     private TextView tv9;
     private TextView tv10;
-    private  ImageView img_score1;
-    private  ImageView img_score2;
-    private  ImageView img_score3;
-    private  ImageView img_score4;
-    private  ImageView img_score5;
-    private  ImageView img_score6;
-    private  ImageView img_score7;
-    private  ImageView img_score8;
-    private  ImageView img_score9;
-    private  ImageView img_score10;
+    private ImageView img_score1;
+    private ImageView img_score2;
+    private ImageView img_score3;
+    private ImageView img_score4;
+    private ImageView img_score5;
+    private ImageView img_score6;
+    private ImageView img_score7;
+    private ImageView img_score8;
+    private ImageView img_score9;
+    private ImageView img_score10;
     private ImageView img_Animation;
     private FrameLayout Frame_A;
     private FrameLayout Frame_B;
@@ -85,46 +87,47 @@ public class RoundOne extends AppCompatActivity {
         Them30s();
         Doicauhoi();
     }
+
     private void khaibao() {
-        Frame_Add30s=findViewById(R.id.Frame_Add30s);
-        Frame_DoiCauHoi=findViewById(R.id.Frame_DoiCauHoi);
+        Frame_Add30s = findViewById(R.id.Frame_Add30s);
+        Frame_DoiCauHoi = findViewById(R.id.Frame_DoiCauHoi);
 
         Frame_A = findViewById(R.id.FrameLayout_DapAnA);
         Frame_B = findViewById(R.id.FrameLayout_DapAnB);
         Frame_C = findViewById(R.id.FrameLayout_DapAnC);
         Frame_D = findViewById(R.id.FrameLayout_DapAnD);
 
-        CheckBox_Volume=findViewById(R.id.CheckBox_Volume);
+        CheckBox_Volume = findViewById(R.id.CheckBox_Volume);
 
         tvScore = findViewById(R.id.tvScore);
-        tvTime=findViewById(R.id.tvTime);
-        tvQuiz=findViewById(R.id.tvQuiz);
-        tv1=findViewById(R.id.tv1);
-        tv2=findViewById(R.id.tv2);
-        tv3=findViewById(R.id.tv3);
-        tv4=findViewById(R.id.tv4);
-        tv5=findViewById(R.id.tv5);
-        tv6=findViewById(R.id.tv6);
-        tv7=findViewById(R.id.tv7);
-        tv8=findViewById(R.id.tv8);
-        tv9=findViewById(R.id.tv9);
-        tv10=findViewById(R.id.tv10);
-        tv_A=findViewById(R.id.tv_A);
-        tv_B=findViewById(R.id.tv_B);
-        tv_C=findViewById(R.id.tv_C);
-        tv_D=findViewById(R.id.tv_D);
+        tvTime = findViewById(R.id.tvTime);
+        tvQuiz = findViewById(R.id.tvQuiz);
+        tv1 = findViewById(R.id.tv1);
+        tv2 = findViewById(R.id.tv2);
+        tv3 = findViewById(R.id.tv3);
+        tv4 = findViewById(R.id.tv4);
+        tv5 = findViewById(R.id.tv5);
+        tv6 = findViewById(R.id.tv6);
+        tv7 = findViewById(R.id.tv7);
+        tv8 = findViewById(R.id.tv8);
+        tv9 = findViewById(R.id.tv9);
+        tv10 = findViewById(R.id.tv10);
+        tv_A = findViewById(R.id.tv_A);
+        tv_B = findViewById(R.id.tv_B);
+        tv_C = findViewById(R.id.tv_C);
+        tv_D = findViewById(R.id.tv_D);
 
-        imgHome=findViewById(R.id.imgHome);
-        img_score1=findViewById(R.id.img_score1);
-        img_score2=findViewById(R.id.img_score2);
-        img_score3=findViewById(R.id.img_score3);
-        img_score4=findViewById(R.id.img_score4);
-        img_score5=findViewById(R.id.img_score5);
-        img_score6=findViewById(R.id.img_score6);
-        img_score7=findViewById(R.id.img_score7);
-        img_score8=findViewById(R.id.img_score8);
-        img_score9=findViewById(R.id.img_score9);
-        img_score10=findViewById(R.id.img_score10);
+        imgHome = findViewById(R.id.imgHome);
+        img_score1 = findViewById(R.id.img_score1);
+        img_score2 = findViewById(R.id.img_score2);
+        img_score3 = findViewById(R.id.img_score3);
+        img_score4 = findViewById(R.id.img_score4);
+        img_score5 = findViewById(R.id.img_score5);
+        img_score6 = findViewById(R.id.img_score6);
+        img_score7 = findViewById(R.id.img_score7);
+        img_score8 = findViewById(R.id.img_score8);
+        img_score9 = findViewById(R.id.img_score9);
+        img_score10 = findViewById(R.id.img_score10);
         questionHelper = new QuestionHelper(this);
         questionHelper.getWritableDatabase();
         if (questionHelper.getAllofTheQuestion().size() == 0) {
@@ -133,12 +136,12 @@ public class RoundOne extends AppCompatActivity {
         list = questionHelper.getAllofTheQuestion();
         Collections.shuffle(list);
 
-        for(Question q : list){
+        for (Question q : list) {
             Log.d("List", q.getQuestion());
         }
 
         currentQuestion = list.get(qid);
-        timeValue = 120;
+        timeValue = 1200;
         countDownTimer = new CountDownTimer(120000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -150,6 +153,7 @@ public class RoundOne extends AppCompatActivity {
                     timeUp();
                 }
             }
+
             @Override
             public void onFinish() {
                 timeUp();
@@ -157,6 +161,7 @@ public class RoundOne extends AppCompatActivity {
         }.start();
         updateQO();
     }
+
     private void ReturnMenu() {
         final Dialog dialog = new Dialog(RoundOne.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -172,7 +177,7 @@ public class RoundOne extends AppCompatActivity {
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(RoundOne.this,StartScreen.class));
+                startActivity(new Intent(RoundOne.this, StartScreen.class));
             }
         });
         btnTiepTuc.setOnClickListener(new View.OnClickListener() {
@@ -182,6 +187,7 @@ public class RoundOne extends AppCompatActivity {
             }
         });
     }
+
     private void updateQO() {
         tvQuiz.setText(currentQuestion.getQuestion());
 
@@ -205,11 +211,13 @@ public class RoundOne extends AppCompatActivity {
         tvScore.setText(String.valueOf(coinValue));
         coinValue += 50;
     }
+
     private void timeUp() {
         Intent intent = new Intent(this, TimeUp.class);
         startActivity(intent);
         finish();
     }
+
     @Override
     protected void onRestart() {
         super.onRestart();
@@ -221,11 +229,13 @@ public class RoundOne extends AppCompatActivity {
         super.onStop();
         countDownTimer.cancel();
     }
+
     @Override
     protected void onPause() {
         super.onPause();
         countDownTimer.cancel();
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -233,18 +243,21 @@ public class RoundOne extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
     private void disableButton() {
         tv_A.setEnabled(false);
         tv_B.setEnabled(false);
         tv_C.setEnabled(false);
         tv_D.setEnabled(false);
     }
+
     private void enableButton() {
         tv_A.setEnabled(true);
         tv_B.setEnabled(true);
         tv_C.setEnabled(true);
         tv_D.setEnabled(true);
     }
+
     private void correctDialog() {
         final Dialog dialogCorrect = new Dialog(RoundOne.this);
         dialogCorrect.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -270,12 +283,14 @@ public class RoundOne extends AppCompatActivity {
             }
         });
     }
+
     private void resetColor() {
         Frame_A.setBackgroundResource(R.drawable.fom_start);
         Frame_B.setBackgroundResource(R.drawable.fom_start);
         Frame_C.setBackgroundResource(R.drawable.fom_start);
         Frame_D.setBackgroundResource(R.drawable.fom_start);
     }
+
     private void processAnswerSelection(int selectedOptionIndex) {
 
         if (selectedOptionIndex == correctOptionIndex) {
@@ -301,37 +316,37 @@ public class RoundOne extends AppCompatActivity {
                     ObjectAnimator anim3 = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 435f);
                     anim3.setDuration(10);
                     anim3.start();
-                    img_score3.setBackgroundResource(R.drawable.anim4);
+                    img_score4.setBackgroundResource(R.drawable.anim4);
                     break;
                 case 4:
                     ObjectAnimator anim4 = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 360f);
                     anim4.setDuration(10);
                     anim4.start();
-                    img_score3.setBackgroundResource(R.drawable.anim4);
+                    img_score5.setBackgroundResource(R.drawable.anim4);
                     break;
                 case 5:
                     ObjectAnimator anim5 = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 285f);
                     anim5.setDuration(10);
                     anim5.start();
-                    img_score3.setBackgroundResource(R.drawable.anim4);
+                    img_score6.setBackgroundResource(R.drawable.anim4);
                     break;
                 case 6:
                     ObjectAnimator anim6 = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 210f);
                     anim6.setDuration(10);
                     anim6.start();
-                    img_score3.setBackgroundResource(R.drawable.anim4);
+                    img_score7.setBackgroundResource(R.drawable.anim4);
                     break;
                 case 7:
                     ObjectAnimator anim7 = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 135f);
                     anim7.setDuration(10);
                     anim7.start();
-                    img_score3.setBackgroundResource(R.drawable.anim4);
+                    img_score8.setBackgroundResource(R.drawable.anim4);
                     break;
                 case 8:
                     ObjectAnimator anim8 = ObjectAnimator.ofFloat(imgAnimation, "translationY", 0f, 60f);
                     anim8.setDuration(10);
                     anim8.start();
-                    img_score3.setBackgroundResource(R.drawable.anim4);
+                    img_score9.setBackgroundResource(R.drawable.anim4);
                     break;
 
                 case 9:
@@ -346,15 +361,16 @@ public class RoundOne extends AppCompatActivity {
             gameLostPlayAgain();
         }
     }
+
     public void Frame_A(View view) {
         Frame_A.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorOranger));
         processAnswerSelection(0);
     }
+
     public void Frame_B(View view) {
         Frame_B.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorOranger));
         processAnswerSelection(1); // Assuming the options are shuffled, and the correct answer is at index 0
     }
-
 
 
     public void Frame_C(View view) {
@@ -373,12 +389,12 @@ public class RoundOne extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
     public void gameWon() {
-        Intent intent = new Intent(this, GameWon.class);
-        startActivity(intent);
+        startActivity(new Intent(RoundOne.this,GameWon.class));
         finish();
     }
-    private void Dungtrogiup(){
+    private void Dungtrogiup() {
         final Dialog dialog = new Dialog(RoundOne.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialoghelp);
@@ -394,7 +410,8 @@ public class RoundOne extends AppCompatActivity {
             }
         });
     }
-    private void onclickDoiCauhoi(){
+
+    private void onclickDoiCauhoi() {
         Frame_DoiCauHoi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -402,7 +419,8 @@ public class RoundOne extends AppCompatActivity {
             }
         });
     }
-    private void onclickXemthem30s(){
+
+    private void onclickXemthem30s() {
         Frame_Add30s.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -410,34 +428,37 @@ public class RoundOne extends AppCompatActivity {
             }
         });
     }
-    private void Them30s(){
+
+    private void Them30s() {
         Frame_Add30s.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (coinValue < 100){
+                if (coinValue < 100) {
                     Dungtrogiup();
-                }
-                else {
-                    String a = String.valueOf(coinValue-=150);
+                } else {
+                    String a = String.valueOf(coinValue -= 100);
                     tvScore.setText(a);
-                    timeValue-=30;
+                    timeValue += 30;
                 }
             }
         });
     }
-    private void Doicauhoi(){
+
+    private void Doicauhoi() {
         Frame_DoiCauHoi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (coinValue < 100){
+                if (coinValue < 100) {
                     Dungtrogiup();
-                }
-                else {
-                    list = questionHelper.getAllofTheQuestion();
-                    Collections.shuffle(list);
-                    String a = String.valueOf(coinValue-=100);
-                    tvScore.setText(a);
-                    coinValue-=100;
+                } else {
+                     list = questionHelper.getAllofTheQuestion();
+                     Collections.shuffle(list);
+                   coinValue -= 100;
+                    tvScore.setText(String.valueOf(coinValue));
+                     if (!list.isEmpty()) {
+                           currentQuestion = list.get(0);
+                               updateQO();
+                    }
                 }
             }
         });
