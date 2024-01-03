@@ -389,6 +389,7 @@ public class RoundOne extends AppCompatActivity {
                     anim9.setDuration(10);
                     anim9.start();
                     img_score10.setBackgroundResource(R.drawable.anim4);
+                    gameWon();
                     break;
             }
         } else {
