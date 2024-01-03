@@ -18,24 +18,21 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class RoundOne extends AppCompatActivity {
+
+
+    private CheckBox CheckBox_Volume;
     private TextView tvScore;
     private TextView tvTime;
-    private FrameLayout Frame_Add30s;
-    private FrameLayout Frame_DoiCauHoi;
-    private ImageView imgHome;
-    private CheckBox CheckBox_Volume;
     private TextView tvQuiz;
     private TextView tv1;
     private TextView tv2;
@@ -47,6 +44,7 @@ public class RoundOne extends AppCompatActivity {
     private TextView tv8;
     private TextView tv9;
     private TextView tv10;
+    private ImageView imgHome;
     private ImageView img_score1;
     private ImageView img_score2;
     private ImageView img_score3;
@@ -58,6 +56,8 @@ public class RoundOne extends AppCompatActivity {
     private ImageView img_score9;
     private ImageView img_score10;
     private ImageView img_Animation;
+    private FrameLayout Frame_Add30s;
+    private FrameLayout Frame_DoiCauHoi;
     private FrameLayout Frame_A;
     private FrameLayout Frame_B;
     private FrameLayout Frame_C;
@@ -74,10 +74,11 @@ public class RoundOne extends AppCompatActivity {
     int coinValue = 0;
     AnimatedImageDrawable animatedImageDrawable;
     CountDownTimer countDownTimer;
-    MediaPlayer bacgroudmuis = new MediaPlayer();
+    MediaPlayer music = new MediaPlayer();
     private float imgAnimation;
     private int correctOptionIndex;
-
+    Button btnContinue;
+    Button btnMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +87,19 @@ public class RoundOne extends AppCompatActivity {
         khaibao();
         Them30s();
         Doicauhoi();
+        music = MediaPlayer.create(this, R.raw.inspire);
+        music.start();
+        music.setLooping(true);
+        CheckBox_Volume.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    music.pause();
+                }else {
+                    music.start();
+                }
+            }
+    });
     }
 
     private void khaibao() {
@@ -128,6 +142,12 @@ public class RoundOne extends AppCompatActivity {
         img_score8 = findViewById(R.id.img_score8);
         img_score9 = findViewById(R.id.img_score9);
         img_score10 = findViewById(R.id.img_score10);
+        imgHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ReturnMenu();
+            }
+        });
         questionHelper = new QuestionHelper(this);
         questionHelper.getWritableDatabase();
         if (questionHelper.getAllofTheQuestion().size() == 0) {
@@ -168,22 +188,25 @@ public class RoundOne extends AppCompatActivity {
         dialog.setContentView(R.layout.dialog_home);
         dialog.show();
         TextView tvExit;
-        Button btnTiepTuc;
-        Button btnMenu;
+
 
         tvExit = dialog.findViewById(R.id.tvExit);
-        btnTiepTuc = dialog.findViewById(R.id.btnTiepTuc);
+        tvExit.setText("Bạn có muốn quay lại menu không ?");
+        btnContinue = dialog.findViewById(R.id.btnContinue);
         btnMenu = dialog.findViewById(R.id.btnMenu);
+        onPause();
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                finish();
                 startActivity(new Intent(RoundOne.this, StartScreen.class));
             }
         });
-        btnTiepTuc.setOnClickListener(new View.OnClickListener() {
+        btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
+                onResume();
             }
         });
     }
@@ -223,7 +246,19 @@ public class RoundOne extends AppCompatActivity {
         super.onRestart();
         countDownTimer.start();
     }
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (music != null) {
+            music.stop();
+            music.release();
+        }
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        countDownTimer.start();
+    }
     @Override
     protected void onStop() {
         super.onStop();
@@ -354,11 +389,11 @@ public class RoundOne extends AppCompatActivity {
                     anim9.setDuration(10);
                     anim9.start();
                     img_score10.setBackgroundResource(R.drawable.anim4);
-                    gameWon();
                     break;
             }
         } else {
             gameLostPlayAgain();
+            finish();
         }
     }
 
@@ -400,10 +435,10 @@ public class RoundOne extends AppCompatActivity {
         dialog.setContentView(R.layout.dialoghelp);
         dialog.show();
         TextView tvStatus;
-        Button btnTiepTuc;
+        Button btnContinue;
         tvStatus = dialog.findViewById(R.id.tvStatus);
-        btnTiepTuc = dialog.findViewById(R.id.btnTiepTuc);
-        btnTiepTuc.setOnClickListener(new View.OnClickListener() {
+        btnContinue = dialog.findViewById(R.id.btnContinue);
+        btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
