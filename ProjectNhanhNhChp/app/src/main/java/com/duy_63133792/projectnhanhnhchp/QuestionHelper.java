@@ -208,8 +208,7 @@ public class QuestionHelper extends SQLiteOpenHelper {
                 "Bạn có 1000 cộng thêm 40. Bây giờ bạn cộng thêm 1000 khác. Và giờ thì cộng thêm 30...Cộng thêm 1000 nữa. Cộng thêm 20. Cộng thêm 1000 khác. Cộng thêm 10. Tổng là bao nhiêu vậy?",
                 new String[]{"5000", "5100", "4100", "3900"}, "4100"));
         questionArrayList.add(new Question(
-                "Lịch nào dài nhất?",
-                new String[]{"Lịch sử", "Lịch trình", "Lịch thi", "Tất cả đều đúng"}, "Lịch sử"));
+                "Lịch nào dài nhất?", new String[]{"Lịch sử", "Lịch trình", "Lịch thi", "Tất cả đều đúng"}, "Lịch sử"));
         questionArrayList.add(new Question(
                 "Đố ai quét sạch quân Đường\n" + "\n" + "Nổi danh Bố Cái Đại Vương thuở nào\n" +
                         "\n" + "Tiếc thay mệnh bạc tài cao\n" + "\n" + "Giang sơn đành phải rơi vào ngoại bang?",

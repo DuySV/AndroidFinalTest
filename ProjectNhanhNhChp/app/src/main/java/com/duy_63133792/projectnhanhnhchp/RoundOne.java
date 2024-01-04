@@ -28,8 +28,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class RoundOne extends AppCompatActivity {
-
-
     private CheckBox CheckBox_Volume;
     private TextView tvScore;
     private TextView tvTime;
@@ -66,6 +64,7 @@ public class RoundOne extends AppCompatActivity {
     private TextView tv_B;
     private TextView tv_C;
     private TextView tv_D;
+
     Question currentQuestion;
     QuestionHelper questionHelper;
     List<Question> list;
@@ -142,6 +141,7 @@ public class RoundOne extends AppCompatActivity {
         img_score8 = findViewById(R.id.img_score8);
         img_score9 = findViewById(R.id.img_score9);
         img_score10 = findViewById(R.id.img_score10);
+        btnContinue=findViewById(R.id.btnContinue);
         imgHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -161,7 +161,7 @@ public class RoundOne extends AppCompatActivity {
         }
 
         currentQuestion = list.get(qid);
-        timeValue = 1200;
+        timeValue = 120;
         countDownTimer = new CountDownTimer(120000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -405,7 +405,7 @@ public class RoundOne extends AppCompatActivity {
 
     public void Frame_B(View view) {
         Frame_B.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorOranger));
-        processAnswerSelection(1); // Assuming the options are shuffled, and the correct answer is at index 0
+        processAnswerSelection(1);
     }
 
 
@@ -439,10 +439,12 @@ public class RoundOne extends AppCompatActivity {
         Button btnContinue;
         tvStatus = dialog.findViewById(R.id.tvStatus);
         btnContinue = dialog.findViewById(R.id.btnContinue);
+        onPause();
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
+                onResume();
             }
         });
     }
